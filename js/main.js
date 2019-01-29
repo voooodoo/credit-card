@@ -1,4 +1,7 @@
 const form = document.getElementById('creditcard');
+const load = document.querySelector('.load');
+const message = document.querySelector('.succes');
+
 form.cardnumber.addEventListener('input', checkCardNumber);
 form.cardnumber.addEventListener('blur', () => {
   if (validateCardNumber(event.target.value)) {
@@ -70,8 +73,14 @@ form.showmail.addEventListener('input', event => {
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  console.log(1);
+  form.style.display = 'none';
+  load.style.display = 'block';
+  setTimeout(() => {
+    load.style.display = 'none';
+    message.style.display = 'block';
+  }, 2000);
 });
+
 function setExpDateError() {
   form.expdate.style.border = '2px solid red';
 }
